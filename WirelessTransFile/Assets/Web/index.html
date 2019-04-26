@@ -1,0 +1,204 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <title>UC</title>
+  <link href="/-_-/img/favicon.ico" rel="Shortcut Icon" />
+  <link rel="stylesheet" href="/-_-/css/Wifi.min.css">
+  <script src="/-_-/js/Wifi.min.js"></script>
+
+</head>
+<body>
+
+<div class="header">
+<h1><b class="gPic iLogo"></b><span id="Title"></span></h1>
+</div>
+  
+<div class="gRaius2 content" id="Content">
+</div>
+
+<div class="footer"></div>
+
+<div class="loading" id="Loading"></div>
+<div class="shadow" id="Shadow"></div>
+
+
+<!-- auth -->
+<script type="text/template" id="tpl-auth">
+<div class="authContent" id="Auth">
+  <p class="authIntro"><%=data.authIntro%></p>
+  <div class="authArea">
+    <div class="gPosAuth">
+    <p><%=data.authGuide%>:</p>
+    <div class="gRaius authInput">
+      <input type="password" maxLength="6"/>
+      <span><%=data.authBtn%></span>
+    </div>
+    <div class="gRaius authTips">
+      <b class="gPic iArrow"></b>
+      <p class="gRed"><%=data.authError.ts%></p>
+      <p class="gGray"></p>
+    </div>
+    </div>
+  </div>
+</div>
+</script>
+
+<!-- alert -->
+<script type="text/template" id="tpl-alert">
+<div class="gRaius3 alert" id="Alert">
+<% if(data.title) { %>
+  <div class="title"><a href="javascript:" class="gPic iColse"></a><%=data.title%></div>
+<% } %>
+  <p class="warning"><%=data.warning%></p>
+<% if(!data.title) { %>
+  <div class="btnArea">
+    <a href="javascript:" class="gRaius alertFirstBtn"><%=data.btnText.firstBtn%></a>
+    <a href="javascript:" class="gRaius alertSecondBtn"><%=data.btnText.SecondBtn%></a>
+  </div>
+<% } %>
+</div>
+</script>
+
+<!-- index -->
+<script type="text/template" id="tpl-index">
+<div class="indexContent" id="Index">
+  <div class="gRaius1 menu"> 
+    <div class="nav">
+      <% for(var i = 0; i < data.formatNav.length; i ++) { %>
+      <a href="javascript:" class="navItem <% if(data.navOn == data.formatNav[i].path) { %> navItemOn <% } %> dirlist " data-path="<%=data.formatNav[i].path%>"><%=data.formatNav[i].name %></a>
+      <% if(i == 0) { %> <div class="navLine"></div> <% } %> 
+      <% } %>
+    </div>
+    <div class="spaceTs">
+      <p class="space"></p>
+      <p><%=data.spaceTxt%></p>
+    </div>
+  </div>
+  <div class="menuContent">
+    <div class="menuHead">
+        <ul class="crumb">
+        <% for(var i = 0; i < data.formatCrumb.length; i ++) { %>
+          <% if (i == 0) { %>
+          <li class="gPic iCrumbL"></li>
+          <% }%>
+          <li class="crumbItem <% if(data.formatCrumb[i].path) { %> dirlist <% } %>" data-path="<%=data.formatCrumb[i].path%>"><%=data.formatCrumb[i].name%></li>
+          <% if( data.formatCrumb.length > 1 && i < data.formatCrumb.length -1) {%>
+          <li class="gPic iCrumbM"></li>
+          <% }%>
+          <% if( i == data.formatCrumb.length -1) {%>
+          <li class="gPic iCrumbR"></li>
+          <% }%>
+        <% } %>
+        </ul>
+        <a href="javascript:" class="listAdd gRaius"><b class="gPic gInBlock iAdd"></b><%= data.updateBtn%></a>
+        <a href="javascript:" class="listDel" id="ListDel"><b class="gPic gInBlock iDel"></b><%= data.delBtn %></a>
+    </div>
+    <div class="listHead">
+      <div class="span1"><b class="gPic iCheckbox" id="CheckboxAll"></b></div>
+      <div class="span3"><%= data.listName %></div>
+      <div class="span5"><%= data.listData %></div>
+      <div class="span6"><%= data.listSize %></div>
+    </div>
+    <ul class="listContent">
+    <% for (var i = 0; i < data.FILES.length; i++) { %> 
+       <li class="listItem" data-path="<%=data.FILES[i].PATH%>" data-type="<%=data.FILES[i].formatType%>" data-name ="<%=data.FILES[i].formatAllName%>">&nbsp;
+          <b class="gPic iDomian"></b>
+          <div class="span1"><b class="gPic iCheckbox"></b></div>
+          <div class="span2"><b class="gPic iType i-<%=data.FILES[i].formatCss%>"></b></div>
+          <div class="span3">
+            <% if(data.FILES[i].KIND == "DIR") { %>
+            <span class="dirlist" ><%=data.FILES[i].formatName%></span>
+            <% } else {%>
+            <span class="filelist" ><%=data.FILES[i].formatName%></span>
+            <% }%>
+            <input class="listInput" type="text" />
+          </div>
+          <div class="span4">
+            <% if(data.FILES[i].KIND != "DIR") { %>
+            <b class="gPic iListDown" title="<%= data.listGuide.down %>"></b>
+            <%}%>
+            <b class="gPic iListDel" title="<%= data.listGuide.del %>"></b>
+            <b class="gPic iListMod" title="<%= data.listGuide.mod %>"></b>
+          </div>
+          <div class="span5 gGary2"><%=data.FILES[i].DATE%></div>
+          <div class="span6 gGary2"><%=data.FILES[i].SIZE%></div>
+        </li>
+    <% } %>
+    <% if(data.FILES.length < 1) { %>
+       <li class="gPic iListBg"><%=data.noList %></li>
+    <% } %>
+    </ul>
+    <div class="listNumTs" id="listNumTs">
+    <span class="gdisNo"><%= data.choiceFiles%> <span>2</span></span>
+    <span><%= data.filesTxt %><%= data.FILES.length %></span>
+    </div>
+  </div>
+</div>
+</script>
+
+<!-- alertAuth -->
+<script type="text/template" id="tpl-alertAuth">
+<div class="gRaius3 alertAuth" id="AlertAuth">
+  <a href="javascript:" class="gPic iAuthColse"></a>
+  <h2><%=data.alertAuth.title%></h2>
+  <p><%=data.alertAuth.ts1%></p>
+  <p><%=data.alertAuth.ts2%></p>
+  <p><%=data.alertAuth.ts3%></p>
+  <a href="javascript:" class="gRaius alertAuthBtn"><%=data.alertAuth.btn%></a>
+  <div class = "alertAuthArea">
+    <p><%=data.authGuide%>:</p>
+    <div class="gRaius authInput">
+      <input type="password" maxLength="6"/>
+      <span><%=data.authBtn%></span>
+    </div>
+  </div>
+  <div class="gRaius authTips">
+    <b class="gPic iArrow"></b>
+    <p class="gRed"><%=data.authError.ts%></p>
+    <p class="gGray"></p>
+  </div>
+</div>
+</script>
+
+<!-- update -->
+<script type="text/template" id="tpl-alertUpdate">
+<div class="gRaius3 alert alertUpdate" id="AlertUpdate">
+  <div class="title"><a href="javascript:" class="gPic iColse"></a><%=data.updateTs.title%></div>
+  <div class="info">
+    <span id="updateBtn"></span>
+    <span><%=data.spaceTxt%>：<b class="diskspace">5G</b></span>
+  </div>
+  <div class="listHead">
+    <div class="span7"><%=data.updateTs.listName%></div>
+    <div class="span8"><%=data.updateTs.listRate%></div>
+    <div class="span9"><%=data.updateTs.listSize%></div>
+  </div>
+  <ul class="list updateList" id="updateList"></ul>
+  <div class="updateTs">
+    <div class="gPic iUpdateTs"><%=data.updateTs.guide%></div>
+    <p><%=data.updateTs.waring%></p>
+  </div>
+  <div class="mask shadow"></div>
+</div>
+</script>
+
+<!-- updateList -->
+<script type="text/template" id="tpl-alertUpdateList">
+<li class="listItem" id="<%=data.id%>">
+  <div class="span7"><%=data.name%></div>
+  <div class="span8"><%=data.rate%></div>
+  <div class="span9"><%=data.size%></div>
+  <div class="gPic iUpdateStop"></div>
+</li>
+</script>
+
+
+<script>
+elf.require(['Wifi::App'], function (app) {
+  app.init();
+});
+</script>
+</body>
+</html>
+		

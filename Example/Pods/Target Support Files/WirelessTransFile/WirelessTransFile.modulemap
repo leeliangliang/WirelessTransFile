@@ -1,0 +1,6 @@
+framework module WirelessTransFile {
+  umbrella header "WirelessTransFile-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -13,6 +13,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    [WLTFileManager startServer];
+    
+    NSLog(@"%@",[WLTFileManager serverUrl]);
     return YES;
 }
 

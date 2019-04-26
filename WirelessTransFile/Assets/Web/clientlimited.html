@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  	<title></title>
+    <link href="/-_-/img/favicon.ico" rel="Shortcut Icon" />
+    <style>
+	body{background:#ebebeb; color:#3c3c3c; font-size:14px;font-family:verdan;text-align:center;}
+	body,p{margin:0;padding:0;border:0}
+	.gRaius{border-radius:3px;box-shadow:2px 3px 5px rgba(0,0,0,0.05);}
+	.gInBlock{display:inline-block; vertical-align:middle; overflow:hidden}
+	.iLogo{ width:25px; height:25px; background:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAZCAYAAAAv3j5gAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAALDSURBVEhLnZYxaypREIX9S0aNGhAVkYgQIighSBAbGxFESCMIghAQAoGAYBEQhBQpAikCKSxSWAg2go1FCgub/Ix5fPe9keu6u/oUFnfvzp0zc+bM3A0ErN9ms5FeryepVEoikYgEg0EJhUKSzWbl5eVFbNuT7z8+PuT8/Nw497pKpZL8/v6eDvjw8OALYAPf3d2dBjQej+Xs7ExisZj598tI383n8/8HG41GQm3g/OfnR3K53EGw+/t7VyDqe3TtAEUAfplVq9U9h4iFPQR+NBiq8wNyy+j29tbsKRQKxwOptL3AJpPJnjNaQO1R73A49AccDAa+2WQymR0H6/XaZOEWVLfbdQdbLBYSDoc9gagdNiqcZrPpaw/4dDrdBUMEFxcXniDIXyn7/PyUZDJ5VDtQux1x5PN5T5Dr62uBIqbH6+urAKSbWatUKp6gMLQF6vf7riBQ9fT0JPTX+/u7oLZarWaaG1qi0aiUy2VDD4FApVvTm7G1XC5dX6bTaVmtVsIUeHx8NA7pH8YVG8lMAVXW+GJPo9EQWODqdDp/M6rX63vZAELNiBAnRGlHCh0oChubcmxubm7k+fl5K5otbYlEYgcI49lsZmgiA+7VmNrYI4rakJ3Th0qdftw2t5NTPQooMk6IHAqY2qwBCjXqjMZE8s6xhSrJ7urqytQv4ATSjvaSe7vdNmCXl5cGjDrxjFgIAGFRq7155xw3X19fxogMcEQ9cFAsFrdZfH9/m+GpWeke32HqPBZQExs0AHtmIRKct1otQ4cCocSDExvH9pzCiQ1kfysw57CFPhtI6TwIZks0Ho8bIB37UIfMKawGhBL1/GGNpj4IggFNZjcfTcY0sNcUROWqNLLudmx4AuPYLjhRojwcI28yent7M5G7Nbk28VGZYYSCaEQoRG2oSz+xuLcz0e8+Mueid/aOhX/IfwC3ZGbcbY1xoQAAAABJRU5ErkJggg==') center center no-repeat}
+	.header,.content{ margin: 0 auto;}
+	.header{width:998px; padding-top:26px; padding-bottom:20px;text-align: left;}
+	.header span{ padding-left:10px; font-weight:normal;font-size:22px; line-height:24px; text-shadow:0 1px 1px #fff;}
+	.content{width:996px; border:1px solid #d1d1d1; background:#fff; position:relative; z-index:1;}
+	</style> 	
+</head>
+<body>
+
+<div class="header" id="Header">
+	<h1><b class="gInBlock iLogo"></b><span id="Title"></span></h1>
+</div>
+  
+<div class="gRaius content">
+	<div style="padding:200px;">
+		<p id="errorTs"></p>
+	</div>
+</div>
+
+<script>
+var config = {
+		zh: {
+			title: 'UC 无线传输',
+			ts: '该手机已经连接到另外一台电脑，如需接入，请重启手机无线传输功能再尝试连接'
+		},
+		en : {
+			title: 'Wi-Fi Sharing',
+			ts: 'The phone is already connected to another computer. If you want to access it, please restart the Wi-Fi connection on the phone and then reconnect.'
+		},
+		ru: {
+			title: 'Wi-Fi Sharing',
+			ts: 'Телефон уже поелючен к другому компьютеру.'
+		},
+		vi: {
+			title: 'Wi-Fi Sharing',
+			ts: 'Điện thoại của bạn đã được kết nối với máy tính khác.'
+		}
+	},
+	defaultLang = 'zh',
+	lang = function (type) {
+		var l;
+		type = type ? type : defaultLang;
+		type = type.slice(0, 2).toLowerCase();
+		l = config[type] ? config[type] :config[defaultLang];
+		return l;
+	},
+	type = (navigator.language || navigator.browserLanguage).toLowerCase();
+    currentLang = lang(type);
+document.getElementById('Title').innerHTML = currentLang.title;
+document.title = currentLang.title;
+document.getElementById('errorTs').innerHTML = currentLang.ts;
+</script>
+</body>
+</html>

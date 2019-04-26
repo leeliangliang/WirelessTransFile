@@ -1,0 +1,58 @@
+PODS:
+  - AFNetworking (3.2.1):
+    - AFNetworking/NSURLSession (= 3.2.1)
+    - AFNetworking/Reachability (= 3.2.1)
+    - AFNetworking/Security (= 3.2.1)
+    - AFNetworking/Serialization (= 3.2.1)
+    - AFNetworking/UIKit (= 3.2.1)
+  - AFNetworking/NSURLSession (3.2.1):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.2.1)
+  - AFNetworking/Security (3.2.1)
+  - AFNetworking/Serialization (3.2.1)
+  - AFNetworking/UIKit (3.2.1):
+    - AFNetworking/NSURLSession
+  - CocoaAsyncSocket (7.6.3)
+  - CocoaHTTPServer (0.1.0):
+    - CocoaAsyncSocket
+    - CocoaLumberjack
+  - CocoaLumberjack (3.5.3):
+    - CocoaLumberjack/Core (= 3.5.3)
+  - CocoaLumberjack/Core (3.5.3)
+  - WirelessTransFile (0.1.0):
+    - AFNetworking
+    - CocoaHTTPServer
+
+DEPENDENCIES:
+  - CocoaHTTPServer (from `https://github.com/leeliangliang/CocoaHTTPServer.git`)
+  - WirelessTransFile (from `../`)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - AFNetworking
+    - CocoaAsyncSocket
+    - CocoaLumberjack
+
+EXTERNAL SOURCES:
+  CocoaHTTPServer:
+    :git: https://github.com/leeliangliang/CocoaHTTPServer.git
+  WirelessTransFile:
+    :path: "../"
+
+CHECKOUT OPTIONS:
+  CocoaHTTPServer:
+    :commit: e1f4425ebfcee71081dc7d410811063e90caf74f
+    :git: https://github.com/leeliangliang/CocoaHTTPServer.git
+
+SPEC CHECKSUMS:
+  AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
+  CocoaAsyncSocket: eafaa68a7e0ec99ead0a7b35015e0bf25d2c8987
+  CocoaHTTPServer: 041257e734a90c83e4eb4b9792f6f745c9f3f468
+  CocoaLumberjack: 2f44e60eb91c176d471fdba43b9e3eae6a721947
+  WirelessTransFile: 4ac5d860f8d09028a37f6199a8497cf236ac4c04
+
+PODFILE CHECKSUM: 8c58f7e1a727724dd4492dee9fdad7b36042b6bb
+
+COCOAPODS: 1.6.1

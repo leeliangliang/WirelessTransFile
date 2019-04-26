@@ -1,0 +1,48 @@
+{
+  "name": "CocoaHTTPServer",
+  "version": "0.1.0",
+  "summary": "A short description of CocoaHTTPServer.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/李亮/CocoaHTTPServer",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "李亮": "554166037@qq.com"
+  },
+  "source": {
+    "git": "https://github.com/李亮/CocoaHTTPServer.git",
+    "tag": "0.1.0"
+  },
+  "requires_arc": true,
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "CocoaHTTPServer/Classes/{Core,Extensions}/**/*.{h,m}",
+  "public_header_files": "CocoaHTTPServer/Classes/{Core,Extensions}/**/*.h",
+  "xcconfig": {
+    "HEADER_SEARCH_PATHS": "\"$(SDKROOT)/usr/include/libxml2\""
+  },
+  "ios": {
+    "frameworks": [
+      "CFNetwork",
+      "Security"
+    ]
+  },
+  "osx": {
+    "frameworks": [
+      "CoreServices",
+      "Security"
+    ]
+  },
+  "libraries": "xml2",
+  "dependencies": {
+    "CocoaAsyncSocket": [
+
+    ],
+    "CocoaLumberjack": [
+
+    ]
+  }
+}

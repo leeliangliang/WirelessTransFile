@@ -1,0 +1,1 @@
+../../../CocoaHTTPServer/CocoaHTTPServer/Classes/Core/Responses/HTTPRedirectResponse.h
