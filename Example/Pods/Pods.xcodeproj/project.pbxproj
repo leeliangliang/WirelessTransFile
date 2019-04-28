@@ -84,6 +84,8 @@
 		97081D04AB2BA9E5E12729BAEF6EAFBA /* CLIColor.h in Headers */ = {isa = PBXBuildFile; fileRef = 107460701BE3E16BFF6106CDC6E6185D /* CLIColor.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		97F5164510D439F4C81C47ECCC81114D /* DAVConnection.h in Headers */ = {isa = PBXBuildFile; fileRef = 7CAD138FF66FF3D6BDD56FA15AA61A94 /* DAVConnection.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		9B343883F082BF15DB5B07B293A1750A /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ECE77A53044EE4A70BB1569A2D5CB3D7 /* AFHTTPSessionManager.m */; };
+		9BB949FD2275D3AF00BEE11F /* WLTActionHandlerResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 9BB949FB2275D3AF00BEE11F /* WLTActionHandlerResponse.h */; };
+		9BB949FE2275D3AF00BEE11F /* WLTActionHandlerResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BB949FC2275D3AF00BEE11F /* WLTActionHandlerResponse.m */; };
 		9CE01D6BC980655744D6D7B3E2FFAD31 /* DDRange.h in Headers */ = {isa = PBXBuildFile; fileRef = E0F13B5C31553982647C554B1BE7B904 /* DDRange.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		A0D348AE68C74DC446FD2336E8318E8A /* DDASLLogCapture.m in Sources */ = {isa = PBXBuildFile; fileRef = 50483A5AD7F4586E6F0EFCF739CE1E93 /* DDASLLogCapture.m */; };
 		A2264F46BE35272B937017CA1A320839 /* HTTPDataResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 51FAB8DECAE6E639125FE403514A0321 /* HTTPDataResponse.m */; };
@@ -239,22 +241,22 @@
 		1A73426B59D66B7FF7A1A23FE615D675 /* DDContextFilterLogFormatter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDContextFilterLogFormatter.h; path = Classes/Extensions/DDContextFilterLogFormatter.h; sourceTree = "<group>"; };
 		1B0287B537F789A91E3C2BB239FCA49B /* DDData.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDData.h; path = CocoaHTTPServer/Classes/Core/Categories/DDData.h; sourceTree = "<group>"; };
 		1C3946AD71985810AA7A87F12466F5CF /* DAVConnection.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DAVConnection.m; path = CocoaHTTPServer/Classes/Extensions/WebDAV/DAVConnection.m; sourceTree = "<group>"; };
-		2299D0A76889ACDBF7D701166C87A4CF /* libPods-WirelessTransFile_Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-WirelessTransFile_Example.a"; path = "libPods-WirelessTransFile_Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2395EF338A896722CAE130527DFDF441 /* libWirelessTransFile.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libWirelessTransFile.a; path = libWirelessTransFile.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		2299D0A76889ACDBF7D701166C87A4CF /* libPods-WirelessTransFile_Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WirelessTransFile_Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2395EF338A896722CAE130527DFDF441 /* libWirelessTransFile.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libWirelessTransFile.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		270575BF8451C19FCC90B26F83EF1EEB /* DDLog.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDLog.h; path = Classes/DDLog.h; sourceTree = "<group>"; };
 		275DDBE7986E9977394F0814CB29E567 /* CocoaAsyncSocket-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CocoaAsyncSocket-prefix.pch"; sourceTree = "<group>"; };
 		27ABB7DADB399B8257D6A52AEB1A7C15 /* AFSecurityPolicy.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFSecurityPolicy.h; path = AFNetworking/AFSecurityPolicy.h; sourceTree = "<group>"; };
 		2968195339E2E8F9DB6E9BB8905578A2 /* AFURLRequestSerialization.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFURLRequestSerialization.h; path = AFNetworking/AFURLRequestSerialization.h; sourceTree = "<group>"; };
 		2A432F8A75359D1EE18FB3AD75A498CC /* CocoaLumberjack-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CocoaLumberjack-prefix.pch"; sourceTree = "<group>"; };
 		2AD7A335E4B9C96C5F72942EB1A98DED /* DAVResponse.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DAVResponse.h; path = CocoaHTTPServer/Classes/Extensions/WebDAV/DAVResponse.h; sourceTree = "<group>"; };
-		2D7AF025B185AD5D9AD6FA840F5B8C03 /* WirelessTransFile.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = WirelessTransFile.bundle; path = "WirelessTransFile-WirelessTransFile.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D7AF025B185AD5D9AD6FA840F5B8C03 /* WirelessTransFile.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WirelessTransFile.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EFB40A49E39825D39A7A50786E75029 /* AFNetworking.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AFNetworking.xcconfig; sourceTree = "<group>"; };
 		2F6446705EDF9B62C6D449C50846A96D /* UIWebView+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIWebView+AFNetworking.m"; path = "UIKit+AFNetworking/UIWebView+AFNetworking.m"; sourceTree = "<group>"; };
 		36B13EA597A4734EDBADDC5D2802F2AB /* HTTPAuthenticationRequest.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HTTPAuthenticationRequest.m; path = CocoaHTTPServer/Classes/Core/HTTPAuthenticationRequest.m; sourceTree = "<group>"; };
 		375B0009C78D7EE3B1EE95DAEBF2BA64 /* HTTPMessage.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HTTPMessage.m; path = CocoaHTTPServer/Classes/Core/HTTPMessage.m; sourceTree = "<group>"; };
 		3772BACA367A973257EE31CF512BC04A /* WebSocket.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = WebSocket.m; path = CocoaHTTPServer/Classes/Core/WebSocket.m; sourceTree = "<group>"; };
-		37C059200C0D343BBCD927708D999662 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
-		37E03F752F2652664475023D5E85A058 /* libCocoaLumberjack.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libCocoaLumberjack.a; path = libCocoaLumberjack.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		37C059200C0D343BBCD927708D999662 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		37E03F752F2652664475023D5E85A058 /* libCocoaLumberjack.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCocoaLumberjack.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		38CFDE407B8F0D06D23590D2D5CEF8F9 /* DDNumber.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DDNumber.m; path = CocoaHTTPServer/Classes/Core/Categories/DDNumber.m; sourceTree = "<group>"; };
 		3B8AA0C01D6986AA915982420C042387 /* CocoaLumberjack.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CocoaLumberjack.h; path = Classes/CocoaLumberjack.h; sourceTree = "<group>"; };
 		416E0FFEC9778EA8FC1CFA2964CD706F /* DDLog.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DDLog.m; path = Classes/DDLog.m; sourceTree = "<group>"; };
@@ -290,7 +292,7 @@
 		72F842F0E722E7A8E3E6DEB8EDDDA1E5 /* CocoaAsyncSocket-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "CocoaAsyncSocket-dummy.m"; sourceTree = "<group>"; };
 		732A8F7FD0F48B946B4F6D2687A122BF /* UIButton+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIButton+AFNetworking.h"; path = "UIKit+AFNetworking/UIButton+AFNetworking.h"; sourceTree = "<group>"; };
 		7355E09D16EAFA3CE058657BAAF4C020 /* HTTPServer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HTTPServer.m; path = CocoaHTTPServer/Classes/Core/HTTPServer.m; sourceTree = "<group>"; };
-		73C19BDDAE0BDBC52CE24C3A9CED4EC7 /* WirelessTransFile.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = WirelessTransFile.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		73C19BDDAE0BDBC52CE24C3A9CED4EC7 /* WirelessTransFile.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = WirelessTransFile.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		748FF53FB4EE858BB3688F7C5864D8F1 /* DDDispatchQueueLogFormatter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDDispatchQueueLogFormatter.h; path = Classes/Extensions/DDDispatchQueueLogFormatter.h; sourceTree = "<group>"; };
 		7CAD138FF66FF3D6BDD56FA15AA61A94 /* DAVConnection.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DAVConnection.h; path = CocoaHTTPServer/Classes/Extensions/WebDAV/DAVConnection.h; sourceTree = "<group>"; };
 		7ECDD946538777EE58317104DFFEFBED /* AFNetworkActivityIndicatorManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFNetworkActivityIndicatorManager.m; path = "UIKit+AFNetworking/AFNetworkActivityIndicatorManager.m"; sourceTree = "<group>"; };
@@ -301,23 +303,25 @@
 		82DB691CF301A3EBBE2A0EA851BB80E3 /* UIProgressView+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIProgressView+AFNetworking.m"; path = "UIKit+AFNetworking/UIProgressView+AFNetworking.m"; sourceTree = "<group>"; };
 		85B73327AE1CBDC842A243929E2E1013 /* DAVResponse.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DAVResponse.m; path = CocoaHTTPServer/Classes/Extensions/WebDAV/DAVResponse.m; sourceTree = "<group>"; };
 		861CEEA335520562F31BA786B41CD93E /* HTTPFileResponse.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTTPFileResponse.h; path = CocoaHTTPServer/Classes/Core/Responses/HTTPFileResponse.h; sourceTree = "<group>"; };
-		8A708000D270A639F1E9DBA1EF5527B8 /* libAFNetworking.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libAFNetworking.a; path = libAFNetworking.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A708000D270A639F1E9DBA1EF5527B8 /* libAFNetworking.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libAFNetworking.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F3065AD1CB951AFA9BDB6F7B21030B3 /* CocoaAsyncSocket.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CocoaAsyncSocket.xcconfig; sourceTree = "<group>"; };
 		8FDA4C39CAA907C332EB33EE975DA3E7 /* AFImageDownloader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFImageDownloader.h; path = "UIKit+AFNetworking/AFImageDownloader.h"; sourceTree = "<group>"; };
 		913425D33CBC4F9B12C16F45A9F6E60B /* UIRefreshControl+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIRefreshControl+AFNetworking.h"; path = "UIKit+AFNetworking/UIRefreshControl+AFNetworking.h"; sourceTree = "<group>"; };
 		93F43343804F0A569486D0E2B7BC2927 /* CocoaHTTPServer.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CocoaHTTPServer.xcconfig; sourceTree = "<group>"; };
 		97ED03899150D4562C1B1A3612D22B38 /* DDDispatchQueueLogFormatter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DDDispatchQueueLogFormatter.m; path = Classes/Extensions/DDDispatchQueueLogFormatter.m; sourceTree = "<group>"; };
 		99599A65A74CA3AEA51A62FD12487BBC /* Pods-WirelessTransFile_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-WirelessTransFile_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
+		9BB949FB2275D3AF00BEE11F /* WLTActionHandlerResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = WLTActionHandlerResponse.h; path = WirelessTransFile/Classes/WLTActionHandlerResponse.h; sourceTree = "<group>"; };
+		9BB949FC2275D3AF00BEE11F /* WLTActionHandlerResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = WLTActionHandlerResponse.m; path = WirelessTransFile/Classes/WLTActionHandlerResponse.m; sourceTree = "<group>"; };
 		9C399C0FD67745FC02EFD5A2CEC65D9D /* DDASLLogCapture.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDASLLogCapture.h; path = Classes/DDASLLogCapture.h; sourceTree = "<group>"; };
 		9CD575C3B29D5CAB4170F02E6CB497E7 /* HTTPDataResponse.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTTPDataResponse.h; path = CocoaHTTPServer/Classes/Core/Responses/HTTPDataResponse.h; sourceTree = "<group>"; };
 		9CEEBBDBA4621F32194491F90E824EB1 /* HTTPAuthenticationRequest.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTTPAuthenticationRequest.h; path = CocoaHTTPServer/Classes/Core/HTTPAuthenticationRequest.h; sourceTree = "<group>"; };
 		9D324EEB625403EFE6FFBA139FC90EB9 /* DDAbstractDatabaseLogger.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DDAbstractDatabaseLogger.m; path = Classes/DDAbstractDatabaseLogger.m; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9F2F5787E64405741E36F42C8623F7C7 /* DDRange.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DDRange.m; path = CocoaHTTPServer/Classes/Core/Categories/DDRange.m; sourceTree = "<group>"; };
 		A4B301585B36E892B4277A529D567D21 /* UIProgressView+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIProgressView+AFNetworking.h"; path = "UIKit+AFNetworking/UIProgressView+AFNetworking.h"; sourceTree = "<group>"; };
 		A553592947770CE6DA524BC54B84969F /* UIRefreshControl+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIRefreshControl+AFNetworking.m"; path = "UIKit+AFNetworking/UIRefreshControl+AFNetworking.m"; sourceTree = "<group>"; };
 		A5564C9FF12F73240673BC7B8274F835 /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+AFNetworking.m"; path = "UIKit+AFNetworking/UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
-		A80759B6FC9BB57DA57572BCA3AB296E /* Web */ = {isa = PBXFileReference; includeInIndex = 1; name = Web; path = WirelessTransFile/Assets/Web; sourceTree = "<group>"; };
+		A80759B6FC9BB57DA57572BCA3AB296E /* Web */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; name = Web; path = WirelessTransFile/Assets/Web; sourceTree = "<group>"; };
 		A9FEFF140DE033B553A0381889DEC3D8 /* UIImage+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+AFNetworking.h"; path = "UIKit+AFNetworking/UIImage+AFNetworking.h"; sourceTree = "<group>"; };
 		AB5537CF9AE110FEB7DEF46E161C22EF /* UIActivityIndicatorView+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIActivityIndicatorView+AFNetworking.m"; path = "UIKit+AFNetworking/UIActivityIndicatorView+AFNetworking.m"; sourceTree = "<group>"; };
 		ACD2FD8F08B42D04690FB3636406C97A /* AFImageDownloader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFImageDownloader.m; path = "UIKit+AFNetworking/AFImageDownloader.m"; sourceTree = "<group>"; };
@@ -340,7 +344,7 @@
 		C2C2DE721FA48244A6D381521D252BEC /* Pods-WirelessTransFile_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-WirelessTransFile_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		C5BED4C067767352148C553C471033D4 /* Pods-WirelessTransFile_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-WirelessTransFile_Example-dummy.m"; sourceTree = "<group>"; };
 		C87962C54B6E415B0C4DB4AD5E91B258 /* HTTPLogging.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTTPLogging.h; path = CocoaHTTPServer/Classes/Core/HTTPLogging.h; sourceTree = "<group>"; };
-		C901A297F195BD6BC5069D77014133AB /* libPods-WirelessTransFile_Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-WirelessTransFile_Tests.a"; path = "libPods-WirelessTransFile_Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C901A297F195BD6BC5069D77014133AB /* libPods-WirelessTransFile_Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WirelessTransFile_Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9C3B7FC3AACD31EE8DB48B68FA0A87C /* UIButton+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIButton+AFNetworking.m"; path = "UIKit+AFNetworking/UIButton+AFNetworking.m"; sourceTree = "<group>"; };
 		CA2C0645C80D467808CC66A8ABBC67FF /* DDASLLogger.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DDASLLogger.m; path = Classes/DDASLLogger.m; sourceTree = "<group>"; };
 		CB520059929125166839A95E11A9AE5B /* DDMultiFormatter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDMultiFormatter.h; path = Classes/Extensions/DDMultiFormatter.h; sourceTree = "<group>"; };
@@ -366,14 +370,14 @@
 		EA9D994983B1E660AB557725D3D29C07 /* DDOSLogger.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DDOSLogger.m; path = Classes/DDOSLogger.m; sourceTree = "<group>"; };
 		EB46C214DAC65F12C52A6CC367D0E4AD /* DDFileLogger+Buffering.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "DDFileLogger+Buffering.h"; path = "Classes/Extensions/DDFileLogger+Buffering.h"; sourceTree = "<group>"; };
 		ECE77A53044EE4A70BB1569A2D5CB3D7 /* AFHTTPSessionManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFHTTPSessionManager.m; path = AFNetworking/AFHTTPSessionManager.m; sourceTree = "<group>"; };
-		ED4ED4E96186186AD248DE7B129C8A8F /* libCocoaAsyncSocket.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libCocoaAsyncSocket.a; path = libCocoaAsyncSocket.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED4ED4E96186186AD248DE7B129C8A8F /* libCocoaAsyncSocket.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCocoaAsyncSocket.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		EDFAC5DE72B7773EABD416E2677BC17F /* DELETEResponse.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DELETEResponse.m; path = CocoaHTTPServer/Classes/Extensions/WebDAV/DELETEResponse.m; sourceTree = "<group>"; };
-		EF67D3C9B3E188CED9E6D1C0E593A0D3 /* libCocoaHTTPServer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libCocoaHTTPServer.a; path = libCocoaHTTPServer.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		EF67D3C9B3E188CED9E6D1C0E593A0D3 /* libCocoaHTTPServer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCocoaHTTPServer.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		F25E769F06F257F87D8E7ADFE7E05BEC /* HTTPErrorResponse.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTTPErrorResponse.h; path = CocoaHTTPServer/Classes/Core/Responses/HTTPErrorResponse.h; sourceTree = "<group>"; };
 		F3B5C001FFF010DEE19382A2D4197867 /* MultipartMessageHeaderField.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MultipartMessageHeaderField.h; path = CocoaHTTPServer/Classes/Core/Mime/MultipartMessageHeaderField.h; sourceTree = "<group>"; };
 		F54E1003155287587ADAF4594DB23F4F /* UIWebView+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIWebView+AFNetworking.h"; path = "UIKit+AFNetworking/UIWebView+AFNetworking.h"; sourceTree = "<group>"; };
 		F6884155AA33DE4EEE163DEDF4000C9F /* HTTPErrorResponse.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HTTPErrorResponse.m; path = CocoaHTTPServer/Classes/Core/Responses/HTTPErrorResponse.m; sourceTree = "<group>"; };
-		F6E3C53B9B1776676B79AA5075F61A69 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		F6E3C53B9B1776676B79AA5075F61A69 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		FA31B3C93A67C9754EAD8C965AD51617 /* Pods-WirelessTransFile_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-WirelessTransFile_Tests-dummy.m"; sourceTree = "<group>"; };
 		FC5A4448B34CF883A59C5F386DD3ECE6 /* WLTFileManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = WLTFileManager.m; path = WirelessTransFile/Classes/WLTFileManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -501,7 +505,6 @@
 				14DDE2F543523A984DCF1D50D631B931 /* GCDAsyncUdpSocket.m */,
 				413DB645ED74A5FBB77F40E30A361790 /* Support Files */,
 			);
-			name = CocoaAsyncSocket;
 			path = CocoaAsyncSocket;
 			sourceTree = "<group>";
 		};
@@ -527,7 +530,6 @@
 				677755A1FA37AF8C85E79A315046E477 /* Support Files */,
 				DBADAD0498271AA52BABBFFBCD8EE8E1 /* UIKit */,
 			);
-			name = AFNetworking;
 			path = AFNetworking;
 			sourceTree = "<group>";
 		};
@@ -538,6 +540,8 @@
 				FC5A4448B34CF883A59C5F386DD3ECE6 /* WLTFileManager.m */,
 				BD848106A31A3E599A479279CE31CA03 /* WLTHTTPConnection.h */,
 				62C3C3AB847857AB748966EBC7503134 /* WLTHTTPConnection.m */,
+				9BB949FB2275D3AF00BEE11F /* WLTActionHandlerResponse.h */,
+				9BB949FC2275D3AF00BEE11F /* WLTActionHandlerResponse.m */,
 				69B707E0B1C14432AB54C52644A5A986 /* WLTIPAddressTool.h */,
 				92DBDBB33DEC691A309D5C2C75743E16 /* Pod */,
 				72EBB2763BAE491C74E1AFBCF480E31F /* Resources */,
@@ -792,7 +796,6 @@
 				3772BACA367A973257EE31CF512BC04A /* WebSocket.m */,
 				9E0EC082A699EC7E6304EB16FE184044 /* Support Files */,
 			);
-			name = CocoaHTTPServer;
 			path = CocoaHTTPServer;
 			sourceTree = "<group>";
 		};
@@ -802,7 +805,6 @@
 				2EEE87A6222016DBAA4F83D6629D9CA1 /* Core */,
 				BFB968AC18EC00A49D727C0DBEF5978D /* Support Files */,
 			);
-			name = CocoaLumberjack;
 			path = CocoaLumberjack;
 			sourceTree = "<group>";
 		};
@@ -924,6 +926,7 @@
 				C4F436981FBAF80D096DDC9F106D8496 /* AFURLSessionManager.h in Headers */,
 				8B9B6F936EAD4802B58A3202994D1ECF /* UIActivityIndicatorView+AFNetworking.h in Headers */,
 				66E4F66F6C7D19706C21F97C8121AFB4 /* UIButton+AFNetworking.h in Headers */,
+				9BB949FD2275D3AF00BEE11F /* WLTActionHandlerResponse.h in Headers */,
 				7C2EA3131444E4FC36EDAF006A8E08A4 /* UIImage+AFNetworking.h in Headers */,
 				50FA7FB55AB0B6EE328F078F83953B88 /* UIImageView+AFNetworking.h in Headers */,
 				1514DD47DD0EFE7D6ABFC27EE743D12C /* UIKit+AFNetworking.h in Headers */,
@@ -1097,6 +1100,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
@@ -1192,6 +1196,7 @@
 				4A76C618F60268660B024DC54B19B0A1 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				4DF82289D87CCE08962DDB38385A527D /* UIButton+AFNetworking.m in Sources */,
 				8527C392C4672EA0DC765BF16B54862A /* UIImageView+AFNetworking.m in Sources */,
+				9BB949FE2275D3AF00BEE11F /* WLTActionHandlerResponse.m in Sources */,
 				0FCDBD23A36B2852D5F959AF817C6BAB /* UIProgressView+AFNetworking.m in Sources */,
 				7849CA8886BF558557A9248D6BDB02CC /* UIRefreshControl+AFNetworking.m in Sources */,
 				296EF40D064952BAF86099E7AFC4BBDB /* UIWebView+AFNetworking.m in Sources */,
@@ -1390,8 +1395,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 4.2;
 				SYMROOT = "${SRCROOT}/../build";
 			};

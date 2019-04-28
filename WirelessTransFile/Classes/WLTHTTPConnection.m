@@ -6,7 +6,8 @@
 //
 
 #import "WLTHTTPConnection.h"
-#import <CocoaHTTPServer/HTTPAsyncFileResponse.h>
+#import <CocoaHTTPServer/HTTPFileResponse.h>
+#import "WLTActionHandlerResponse.h"
 
 @implementation WLTHTTPConnection
 - (NSObject<HTTPResponse> *)httpResponseForMethod:(NSString *)method URI:(NSString *)path
@@ -20,13 +21,16 @@
     if ([path hasPrefix:@"/-_-"]) {
         NSString *newPath = [path substringFromIndex:4];
         NSString *filePath = [self filePathForURI:newPath];
-        return [[HTTPAsyncFileResponse alloc]initWithFilePath:filePath forConnection:self];
+        return [[HTTPFileResponse alloc]initWithFilePath:filePath forConnection:self];
     }
     NSDictionary *param = [self parseGetParams];
-    
+    if (param){
+        WLTActionHandlerResponse *handler = [[WLTActionHandlerResponse alloc] initWithParams:param];
+        if (handler) return handler;
+    }
     // Convert to relative path
     NSObject<HTTPResponse> * response = [super httpResponseForMethod:method URI:path];
-    return response ?:[[HTTPAsyncFileResponse alloc]initWithFilePath:[self filePathForURI:@"/404.html"] forConnection:self];
+    return response ?:[[HTTPFileResponse alloc]initWithFilePath:[self filePathForURI:@"/404.html"] forConnection:self];
 }
 
 @end
