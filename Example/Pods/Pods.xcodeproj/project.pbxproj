@@ -33,7 +33,7 @@
 		20E969B72751C31E0CCD1FA60E87624B /* AFURLResponseSerialization.h in Headers */ = {isa = PBXBuildFile; fileRef = BF3D4A9EC925E8176DECCA94DF425E96 /* AFURLResponseSerialization.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		250EA53CF3FBF225885360333CE506B8 /* DDLoggerNames.h in Headers */ = {isa = PBXBuildFile; fileRef = 043DE733A4357A3649D1B3255888A26F /* DDLoggerNames.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		25D9FBE1629FF446EAB62969B92BB9A7 /* Pods-WirelessTransFile_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = FA31B3C93A67C9754EAD8C965AD51617 /* Pods-WirelessTransFile_Tests-dummy.m */; };
-		271B24A467574879E46A34C10F2CC7F8 /* WLTIPAddressTool.h in Headers */ = {isa = PBXBuildFile; fileRef = 69B707E0B1C14432AB54C52644A5A986 /* WLTIPAddressTool.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		271B24A467574879E46A34C10F2CC7F8 /* WLTSystemTool.h in Headers */ = {isa = PBXBuildFile; fileRef = 69B707E0B1C14432AB54C52644A5A986 /* WLTSystemTool.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		296EF40D064952BAF86099E7AFC4BBDB /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F6446705EDF9B62C6D449C50846A96D /* UIWebView+AFNetworking.m */; };
 		2AC3725A40FEC95C6B059253F76D50AF /* Pods-WirelessTransFile_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C5BED4C067767352148C553C471033D4 /* Pods-WirelessTransFile_Example-dummy.m */; };
 		2DAE9972544DDFDED2B106ACEED62B9C /* DDLog.h in Headers */ = {isa = PBXBuildFile; fileRef = 270575BF8451C19FCC90B26F83EF1EEB /* DDLog.h */; settings = {ATTRIBUTES = (Project, ); }; };
@@ -86,6 +86,9 @@
 		9B343883F082BF15DB5B07B293A1750A /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ECE77A53044EE4A70BB1569A2D5CB3D7 /* AFHTTPSessionManager.m */; };
 		9BB949FD2275D3AF00BEE11F /* WLTActionHandlerResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 9BB949FB2275D3AF00BEE11F /* WLTActionHandlerResponse.h */; };
 		9BB949FE2275D3AF00BEE11F /* WLTActionHandlerResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BB949FC2275D3AF00BEE11F /* WLTActionHandlerResponse.m */; };
+		9BB94A002276941D00BEE11F /* WLTSystemTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BB949FF2276941D00BEE11F /* WLTSystemTool.m */; };
+		9BB94A032278435A00BEE11F /* NSString+WLTExt.h in Headers */ = {isa = PBXBuildFile; fileRef = 9BB94A012278435A00BEE11F /* NSString+WLTExt.h */; };
+		9BB94A042278435A00BEE11F /* NSString+WLTExt.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BB94A022278435A00BEE11F /* NSString+WLTExt.m */; };
 		9CE01D6BC980655744D6D7B3E2FFAD31 /* DDRange.h in Headers */ = {isa = PBXBuildFile; fileRef = E0F13B5C31553982647C554B1BE7B904 /* DDRange.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		A0D348AE68C74DC446FD2336E8318E8A /* DDASLLogCapture.m in Sources */ = {isa = PBXBuildFile; fileRef = 50483A5AD7F4586E6F0EFCF739CE1E93 /* DDASLLogCapture.m */; };
 		A2264F46BE35272B937017CA1A320839 /* HTTPDataResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 51FAB8DECAE6E639125FE403514A0321 /* HTTPDataResponse.m */; };
@@ -283,7 +286,7 @@
 		62C3C3AB847857AB748966EBC7503134 /* WLTHTTPConnection.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = WLTHTTPConnection.m; path = WirelessTransFile/Classes/WLTHTTPConnection.m; sourceTree = "<group>"; };
 		65ED330F1564A102476E4C48A1180937 /* AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFNetworking.h; path = AFNetworking/AFNetworking.h; sourceTree = "<group>"; };
 		68C4368893ABDC2FAD42803AF2465FD7 /* WebSocket.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WebSocket.h; path = CocoaHTTPServer/Classes/Core/WebSocket.h; sourceTree = "<group>"; };
-		69B707E0B1C14432AB54C52644A5A986 /* WLTIPAddressTool.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WLTIPAddressTool.h; path = WirelessTransFile/Classes/WLTIPAddressTool.h; sourceTree = "<group>"; };
+		69B707E0B1C14432AB54C52644A5A986 /* WLTSystemTool.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WLTSystemTool.h; path = WirelessTransFile/Classes/WLTSystemTool.h; sourceTree = "<group>"; };
 		6A99D3FE6CBD23180CA43F72E5F74550 /* HTTPConnection.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HTTPConnection.m; path = CocoaHTTPServer/Classes/Core/HTTPConnection.m; sourceTree = "<group>"; };
 		6B77C02E04F66EA56CC5298123BE390D /* DDOSLogger.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDOSLogger.h; path = Classes/DDOSLogger.h; sourceTree = "<group>"; };
 		6C292F368AB50059C1091A64731EB75F /* DDLog+LOGV.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "DDLog+LOGV.h"; path = "Classes/DDLog+LOGV.h"; sourceTree = "<group>"; };
@@ -312,6 +315,9 @@
 		99599A65A74CA3AEA51A62FD12487BBC /* Pods-WirelessTransFile_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-WirelessTransFile_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		9BB949FB2275D3AF00BEE11F /* WLTActionHandlerResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = WLTActionHandlerResponse.h; path = WirelessTransFile/Classes/WLTActionHandlerResponse.h; sourceTree = "<group>"; };
 		9BB949FC2275D3AF00BEE11F /* WLTActionHandlerResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = WLTActionHandlerResponse.m; path = WirelessTransFile/Classes/WLTActionHandlerResponse.m; sourceTree = "<group>"; };
+		9BB949FF2276941D00BEE11F /* WLTSystemTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = WLTSystemTool.m; path = WirelessTransFile/Classes/WLTSystemTool.m; sourceTree = "<group>"; };
+		9BB94A012278435A00BEE11F /* NSString+WLTExt.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "NSString+WLTExt.h"; path = "WirelessTransFile/Classes/NSString+WLTExt.h"; sourceTree = "<group>"; };
+		9BB94A022278435A00BEE11F /* NSString+WLTExt.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "NSString+WLTExt.m"; path = "WirelessTransFile/Classes/NSString+WLTExt.m"; sourceTree = "<group>"; };
 		9C399C0FD67745FC02EFD5A2CEC65D9D /* DDASLLogCapture.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDASLLogCapture.h; path = Classes/DDASLLogCapture.h; sourceTree = "<group>"; };
 		9CD575C3B29D5CAB4170F02E6CB497E7 /* HTTPDataResponse.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTTPDataResponse.h; path = CocoaHTTPServer/Classes/Core/Responses/HTTPDataResponse.h; sourceTree = "<group>"; };
 		9CEEBBDBA4621F32194491F90E824EB1 /* HTTPAuthenticationRequest.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HTTPAuthenticationRequest.h; path = CocoaHTTPServer/Classes/Core/HTTPAuthenticationRequest.h; sourceTree = "<group>"; };
@@ -542,7 +548,10 @@
 				62C3C3AB847857AB748966EBC7503134 /* WLTHTTPConnection.m */,
 				9BB949FB2275D3AF00BEE11F /* WLTActionHandlerResponse.h */,
 				9BB949FC2275D3AF00BEE11F /* WLTActionHandlerResponse.m */,
-				69B707E0B1C14432AB54C52644A5A986 /* WLTIPAddressTool.h */,
+				69B707E0B1C14432AB54C52644A5A986 /* WLTSystemTool.h */,
+				9BB949FF2276941D00BEE11F /* WLTSystemTool.m */,
+				9BB94A012278435A00BEE11F /* NSString+WLTExt.h */,
+				9BB94A022278435A00BEE11F /* NSString+WLTExt.m */,
 				92DBDBB33DEC691A309D5C2C75743E16 /* Pod */,
 				72EBB2763BAE491C74E1AFBCF480E31F /* Resources */,
 				E03619F138882EA4290FA18A5FBB2885 /* Support Files */,
@@ -840,7 +849,7 @@
 			files = (
 				4E65EF9FC8DE5114D37843C616A6CE50 /* WLTFileManager.h in Headers */,
 				12ED351FD278EEE6264715D29F9C739C /* WLTHTTPConnection.h in Headers */,
-				271B24A467574879E46A34C10F2CC7F8 /* WLTIPAddressTool.h in Headers */,
+				271B24A467574879E46A34C10F2CC7F8 /* WLTSystemTool.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -918,6 +927,7 @@
 				FC2BEE5A649BD9ED667DC117524ED92E /* AFHTTPSessionManager.h in Headers */,
 				022AA9C914C08FE164F6A72C4C3ECCE2 /* AFImageDownloader.h in Headers */,
 				5CA4BF972E5149C07FF6797B2419DA69 /* AFNetworkActivityIndicatorManager.h in Headers */,
+				9BB94A032278435A00BEE11F /* NSString+WLTExt.h in Headers */,
 				F70F41EF72F7A20E8477C34B0C72B0BB /* AFNetworking.h in Headers */,
 				15295CEF88568A41209A9E95CAE4443D /* AFNetworkReachabilityManager.h in Headers */,
 				073DCBF5208DF7716D4560CDE267AB63 /* AFSecurityPolicy.h in Headers */,
@@ -1196,10 +1206,12 @@
 				4A76C618F60268660B024DC54B19B0A1 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				4DF82289D87CCE08962DDB38385A527D /* UIButton+AFNetworking.m in Sources */,
 				8527C392C4672EA0DC765BF16B54862A /* UIImageView+AFNetworking.m in Sources */,
+				9BB94A042278435A00BEE11F /* NSString+WLTExt.m in Sources */,
 				9BB949FE2275D3AF00BEE11F /* WLTActionHandlerResponse.m in Sources */,
 				0FCDBD23A36B2852D5F959AF817C6BAB /* UIProgressView+AFNetworking.m in Sources */,
 				7849CA8886BF558557A9248D6BDB02CC /* UIRefreshControl+AFNetworking.m in Sources */,
 				296EF40D064952BAF86099E7AFC4BBDB /* UIWebView+AFNetworking.m in Sources */,
+				9BB94A002276941D00BEE11F /* WLTSystemTool.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1612,6 +1624,7 @@
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				ENABLE_TESTABILITY = NO;
 				GCC_PREFIX_HEADER = "Target Support Files/WirelessTransFile/WirelessTransFile-prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				OTHER_LDFLAGS = "";

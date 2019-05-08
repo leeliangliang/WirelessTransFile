@@ -25,7 +25,7 @@
     }
     NSDictionary *param = [self parseGetParams];
     if (param){
-        WLTActionHandlerResponse *handler = [[WLTActionHandlerResponse alloc] initWithParams:param];
+        WLTActionHandlerResponse *handler = [[WLTActionHandlerResponse alloc] initWithParams:param withUriPath:path];
         if (handler) return handler;
     }
     // Convert to relative path

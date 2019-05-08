@@ -9,8 +9,8 @@
 #import <AFNetworking/AFNetworking.h>
 #import <CocoaHTTPServer/HTTPServer.h>
 #import <CocoaHTTPServer/HTTPLogging.h>
-#import "WLTIPAddressTool.h"
 #import "WLTHTTPConnection.h"
+#include "WLTSystemTool.h"
 
 #ifdef DEBUG
 static const int httpLogLevel = HTTP_LOG_LEVEL_INFO;
@@ -127,7 +127,7 @@ static const int httpLogLevel = HTTP_LOG_LEVEL_INFO;
 }
 + (NSString *)ipAddress
 {
-    return WLT_getIPAddresses();
+    return [WLTSystemTool WLT_getIPAddresses];
 }
 + (NSString *)serverUrl{
     NSString *ip = [self ipAddress];

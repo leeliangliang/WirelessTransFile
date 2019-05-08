@@ -6,16 +6,20 @@
 //
 
 #import "WLTActionHandlerResponse.h"
+#import "WLTSystemTool.h"
+
 @interface WLTActionHandlerResponse ()
 @property (nonatomic, copy, readwrite) NSDictionary *param;
+@property (nonatomic, copy) NSString *path;
 @end
 
 @implementation WLTActionHandlerResponse
-- (instancetype)initWithParams:(NSDictionary *)params
+- (instancetype)initWithParams:(NSDictionary *)params withUriPath:(NSString *)path
 {
     if(self = [super initWithData:nil])
     {
         self.param = params;
+        self.path = [NSURL URLWithString:path].path;
         [self _transformJsonDataWith:[self _handlerRequest]];
     }
     return self;
@@ -26,12 +30,17 @@
     if([action isEqualToString:@"Auth"])
     {
         return [self _responseSucessDictWith:nil];
+    }else if([action isEqualToString:@"Browse"])
+    {
+        return [self _responseSucessDictWith:nil];
     }
     return nil;
 }
 - (NSDictionary *)_responseSucessDictWith:(NSDictionary *)dict{
-    NSMutableDictionary *resData = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"0",@"RESULT",nil];
+    NSMutableDictionary *resData = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"0",@"RESULT",[WLTSystemTool WLT_freeDiskSpace],@"DISKSPACE",nil];
     [resData setObject:@[@"videos", @"musics", @"picture", @"documents", @"skins", @"compressed", @"others"] forKey:@"BASICDIRS"];
+    [resData setObject:@[] forKey:@"FILES"];
+    [resData setObject:self.path forKey:@"CURRENTPATH"];
     if(dict){
         [resData addEntriesFromDictionary:dict];
     }
