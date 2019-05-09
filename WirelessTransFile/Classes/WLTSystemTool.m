@@ -5,6 +5,7 @@
 //  Created by Lee on 2019/4/29.
 //
 #import "WLTSystemTool.h"
+#import "NSString+WLTExt.h"
 #include <ifaddrs.h>
 #include <arpa/inet.h>
 #include <net/if.h>
@@ -76,14 +77,22 @@ static const NSString *kWLTFilePathNameKey = @"com.leeliang.WirelessTransFile";
 + (NSString *)WLT_fileRootPath
 {
     NSString *cachePath = NSSearchPathForDirectoriesInDomains(NSCachesDirectory,NSUserDomainMask,YES).firstObject;
-    NSString *rootPath = [cachePath stringByAppendingPathComponent:kWLTFilePathNameKey];
+    NSString *rootPath = [cachePath stringByAppendingPathComponent:[kWLTFilePathNameKey copy]];
     return rootPath;
 }
 + (NSArray *)WLT_getFileInfoFromPath:(NSString *)path
 {
+    NSError *error;
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSString *dirPath = [[self WLT_fileRootPath] stringByAppendingPathComponent:path];
-    NSError *error;
+    BOOL isdir;
+    if (!([fileManager fileExistsAtPath:dirPath isDirectory:&isdir] && isdir)){
+        //不存在或者不是文件夹 创建文件
+        [fileManager createDirectoryAtPath:dirPath withIntermediateDirectories:YES attributes:nil error:&error];
+        if (error) {
+            return nil;
+        }
+    }
     NSArray *filesArray = [fileManager contentsOfDirectoryAtPath:dirPath error:&error];
     NSMutableArray *fileInfoArray = [NSMutableArray arrayWithCapacity:filesArray.count];
     BOOL isDir = NO;
@@ -97,9 +106,8 @@ static const NSString *kWLTFilePathNameKey = @"com.leeliang.WirelessTransFile";
                 NSMutableDictionary *fileInfo = [NSMutableDictionary dictionaryWithObjectsAndKeys:fPath,@"PATH",fileName,@"NAME",@"FILE",@"KIND",nil];
                 NSError *attriError;
                 NSDictionary *fileAttri = [fileManager attributesOfItemAtPath:filepath error:&attriError];
-                [fileAttri fileSize];
                 if (!attriError) {
-                    [fileInfo setObject:@"" forKey:@"SIZE"];
+                    [fileInfo setObject:[NSString formatBitSizeWith:[fileAttri fileSize]] forKey:@"SIZE"];
                 }
                 [fileInfoArray addObject:fileInfo];
             }

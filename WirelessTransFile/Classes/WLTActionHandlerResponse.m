@@ -39,7 +39,7 @@
 - (NSDictionary *)_responseSucessDictWith:(NSDictionary *)dict{
     NSMutableDictionary *resData = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"0",@"RESULT",[WLTSystemTool WLT_freeDiskSpace],@"DISKSPACE",nil];
     [resData setObject:@[@"videos", @"musics", @"picture", @"documents", @"skins", @"compressed", @"others"] forKey:@"BASICDIRS"];
-    [resData setObject:@[] forKey:@"FILES"];
+    [resData setObject:[WLTSystemTool WLT_getFileInfoFromPath:self.path]?:@[] forKey:@"FILES"];
     [resData setObject:self.path forKey:@"CURRENTPATH"];
     if(dict){
         [resData addEntriesFromDictionary:dict];
