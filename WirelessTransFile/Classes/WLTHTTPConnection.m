@@ -8,7 +8,20 @@
 #import "WLTHTTPConnection.h"
 #import <CocoaHTTPServer/HTTPFileResponse.h>
 #import "WLTActionHandlerResponse.h"
+#import <CocoaHTTPServer/HTTPMessage.h>
 
+#import "MultipartFormDataParser.h"
+#import "MultipartMessageHeaderField.h"
+#import "HTTPDynamicFileResponse.h"
+#import "HTTPFileResponse.h"
+#import "WLTSystemTool.h"
+
+@interface WLTHTTPConnection ()
+{
+    MultipartFormDataParser*        parser;
+    NSFileHandle*                    storeFile;
+}
+@end
 @implementation WLTHTTPConnection
 - (NSObject<HTTPResponse> *)httpResponseForMethod:(NSString *)method URI:(NSString *)path
 {
@@ -32,4 +45,152 @@
     NSObject<HTTPResponse> * response = [super httpResponseForMethod:method URI:path];
     return response ?:[[HTTPFileResponse alloc]initWithFilePath:[self filePathForURI:@"/404.html"] forConnection:self];
 }
+
+#pragma mark  -- MultipartFormData
+
+
+- (BOOL)isMultipartFormDataRequestWith:(NSString *)method atPath:(NSString *)path
+{
+    NSDictionary *param = [self parseGetParams];
+    if ([method isEqualToString:@"POST"] && [param[@"action"] isEqualToString:@"upload"])
+    {
+        return YES;
+    }
+    return NO;
+}
+- (BOOL)supportsMethod:(NSString *)method atPath:(NSString *)path
+{
+    // Add support for POST
+    if ([self isMultipartFormDataRequestWith:method atPath:path])
+    {
+        return YES;
+    }
+    
+    return [super supportsMethod:method atPath:path];
+}
+
+- (BOOL)expectsRequestBodyFromMethod:(NSString *)method atPath:(NSString *)path
+{
+    // Inform HTTP server that we expect a body to accompany a POST request
+    
+    if ([self isMultipartFormDataRequestWith:method atPath:path]){
+        // here we need to make sure, boundary is set in header
+        NSString* contentType = [request headerField:@"Content-Type"];
+        NSUInteger paramsSeparator = [contentType rangeOfString:@";"].location;
+        if( NSNotFound == paramsSeparator ) {
+            return NO;
+        }
+        if( paramsSeparator >= contentType.length - 1 ) {
+            return NO;
+        }
+        NSString* type = [contentType substringToIndex:paramsSeparator];
+        if( ![type isEqualToString:@"multipart/form-data"] ) {
+            // we expect multipart/form-data content type
+            return NO;
+        }
+        
+        // enumerate all params in content-type, and find boundary there
+        NSArray* params = [[contentType substringFromIndex:paramsSeparator + 1] componentsSeparatedByString:@";"];
+        for( NSString* param in params ) {
+            paramsSeparator = [param rangeOfString:@"="].location;
+            if( (NSNotFound == paramsSeparator) || paramsSeparator >= param.length - 1 ) {
+                continue;
+            }
+            NSString* paramName = [param substringWithRange:NSMakeRange(1, paramsSeparator-1)];
+            NSString* paramValue = [param substringFromIndex:paramsSeparator+1];
+            
+            if( [paramName isEqualToString: @"boundary"] ) {
+                // let's separate the boundary from content-type, to make it more handy to handle
+                [request setHeaderField:@"boundary" value:paramValue];
+            }
+        }
+        // check if boundary specified
+        if( nil == [request headerField:@"boundary"] )  {
+            return NO;
+        }
+        return YES;
+    }
+    return [super expectsRequestBodyFromMethod:method atPath:path];
+}
+
+- (void)prepareForBodyWithSize:(UInt64)contentLength
+{
+    // set up mime parser
+    NSString* boundary = [request headerField:@"boundary"];
+    parser = [[MultipartFormDataParser alloc] initWithBoundary:boundary formEncoding:NSUTF8StringEncoding];
+    parser.delegate = self;
+}
+
+- (void)processBodyData:(NSData *)postDataChunk
+{
+    // append data to the parser. It will invoke callbacks to let us handle
+    // parsed data.
+    [parser appendData:postDataChunk];
+}
+
+
+//-----------------------------------------------------------------
+#pragma mark multipart form data parser delegate
+
+
+- (void) processStartOfPartWithHeader:(MultipartMessageHeader*) header {
+    // in this sample, we are not interested in parts, other then file parts.
+    // check content disposition to find out filename
+    
+    MultipartMessageHeaderField* disposition = [header.fields objectForKey:@"Content-Disposition"];
+    NSString* filename = [[disposition.params objectForKey:@"filename"] lastPathComponent];
+    
+    if ( (nil == filename) || [filename isEqualToString: @""] ) {
+        // it's either not a file part, or
+        // an empty form sent. we won't handle it.
+        return;
+    }
+    NSString* uploadDirPath = [[WLTSystemTool WLT_fileRootPath] stringByAppendingPathComponent:@"others"];
+    
+    BOOL isDir = YES;
+    if (![[NSFileManager defaultManager]fileExistsAtPath:uploadDirPath isDirectory:&isDir ]) {
+        [[NSFileManager defaultManager]createDirectoryAtPath:uploadDirPath withIntermediateDirectories:YES attributes:nil error:nil];
+    }
+    
+    NSString* filePath = [uploadDirPath stringByAppendingPathComponent: filename];
+    if( [[NSFileManager defaultManager] fileExistsAtPath:filePath] ) {
+        storeFile = nil;
+    }
+    else {
+        if(![[NSFileManager defaultManager] createDirectoryAtPath:uploadDirPath withIntermediateDirectories:true attributes:nil error:nil]) {
+        }
+        if(![[NSFileManager defaultManager] createFileAtPath:filePath contents:nil attributes:nil]) {
+        }
+        storeFile = [NSFileHandle fileHandleForWritingAtPath:filePath];
+    }
+}
+
+
+- (void) processContent:(NSData*) data WithHeader:(MultipartMessageHeader*) header
+{
+    // here we just write the output from parser to the file.
+    if( storeFile ) {
+        [storeFile writeData:data];
+    }
+}
+
+- (void) processEndOfPartWithHeader:(MultipartMessageHeader*) header
+{
+    // as the file part is over, we close the file.
+    [storeFile closeFile];
+    storeFile = nil;
+}
+
+- (void) processPreambleData:(NSData*) data
+{
+    // if we are interested in preamble data, we could process it here.
+    
+}
+
+- (void) processEpilogueData:(NSData*) data
+{
+    // if we are interested in epilogue data, we could process it here.
+    
+}
+
 @end

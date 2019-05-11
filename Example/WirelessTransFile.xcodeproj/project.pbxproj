@@ -23,6 +23,7 @@
 		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
 		71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
+		9B4ADEFC2285A1C800684062 /* AnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B4ADEFB2285A1C800684062 /* AnimationView.m */; };
 		E8C7431AE225B5B40D7C6542 /* libPods-WirelessTransFile_Example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DC092D10541D218BE973B9DF /* libPods-WirelessTransFile_Example.a */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +65,8 @@
 		71719F9E1E33DC2100824A3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8CFB4FA85F76AEC16DC27A4B /* Pods-WirelessTransFile_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WirelessTransFile_Example.release.xcconfig"; path = "Target Support Files/Pods-WirelessTransFile_Example/Pods-WirelessTransFile_Example.release.xcconfig"; sourceTree = "<group>"; };
+		9B4ADEFA2285A1C800684062 /* AnimationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimationView.h; sourceTree = "<group>"; };
+		9B4ADEFB2285A1C800684062 /* AnimationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimationView.m; sourceTree = "<group>"; };
 		A21560E7627C08803BCED9B8 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		A84A97EA67A379AEB999C609 /* Pods-WirelessTransFile_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WirelessTransFile_Tests.debug.xcconfig"; path = "Target Support Files/Pods-WirelessTransFile_Tests/Pods-WirelessTransFile_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		DC092D10541D218BE973B9DF /* libPods-WirelessTransFile_Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WirelessTransFile_Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -132,6 +135,8 @@
 		6003F593195388D20070C39A /* Example for WirelessTransFile */ = {
 			isa = PBXGroup;
 			children = (
+				9B4ADEFA2285A1C800684062 /* AnimationView.h */,
+				9B4ADEFB2285A1C800684062 /* AnimationView.m */,
 				6003F59C195388D20070C39A /* LeeAppDelegate.h */,
 				6003F59D195388D20070C39A /* LeeAppDelegate.m */,
 				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
@@ -248,7 +253,7 @@
 				ORGANIZATIONNAME = "李亮";
 				TargetAttributes = {
 					6003F589195388D20070C39A = {
-						DevelopmentTeam = PL54F4LJG7;
+						DevelopmentTeam = HCMQSRQ732;
 					};
 					6003F5AD195388D20070C39A = {
 						TestTargetID = 6003F589195388D20070C39A;
@@ -372,6 +377,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6003F59E195388D20070C39A /* LeeAppDelegate.m in Sources */,
+				9B4ADEFC2285A1C800684062 /* AnimationView.m in Sources */,
 				6003F5A7195388D20070C39A /* LeeViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
 			);
@@ -501,13 +507,14 @@
 			baseConfigurationReference = 1FE9E2E3BE4254501F25B374 /* Pods-WirelessTransFile_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = PL54F4LJG7;
+				DEVELOPMENT_TEAM = HCMQSRQ732;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "WirelessTransFile/WirelessTransFile-Prefix.pch";
 				INFOPLIST_FILE = "WirelessTransFile/WirelessTransFile-Info.plist";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -517,13 +524,14 @@
 			baseConfigurationReference = 8CFB4FA85F76AEC16DC27A4B /* Pods-WirelessTransFile_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = PL54F4LJG7;
+				DEVELOPMENT_TEAM = HCMQSRQ732;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "WirelessTransFile/WirelessTransFile-Prefix.pch";
 				INFOPLIST_FILE = "WirelessTransFile/WirelessTransFile-Info.plist";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
