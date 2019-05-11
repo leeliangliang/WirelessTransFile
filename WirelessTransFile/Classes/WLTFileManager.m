@@ -9,6 +9,7 @@
 #import <AFNetworking/AFNetworking.h>
 #import <CocoaHTTPServer/HTTPServer.h>
 #import <CocoaHTTPServer/HTTPLogging.h>
+#import "WLTConnectPwdManager.h"
 #import "WLTHTTPConnection.h"
 #include "WLTSystemTool.h"
 
@@ -38,6 +39,7 @@ static const int httpLogLevel = HTTP_LOG_LEVEL_INFO;
     self = [super init];
     if (self) {
         [self initHttpServer];
+        [self _addSystemNotification];
     }
     return self;
 }
@@ -71,8 +73,10 @@ static const int httpLogLevel = HTTP_LOG_LEVEL_INFO;
     NSString *webPath = [[[NSBundle mainBundle] pathForResource:@"WirelessTransFile" ofType:@"bundle"] stringByAppendingPathComponent:@"Web"];
 //    HTTPLogInfo(@"Setting document root: %@", webPath);
     [_httpServer setDocumentRoot:webPath];
-    
-    //添加监听
+}
+//添加监听
+- (void)_addSystemNotification
+{
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(appWillActivate) name:UIApplicationWillEnterForegroundNotification object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(appDidEnterBackground) name:UIApplicationDidEnterBackgroundNotification object:nil];
 }
@@ -92,7 +96,7 @@ static const int httpLogLevel = HTTP_LOG_LEVEL_INFO;
         return nil;
     }
     NSError *error;
-    if([self.httpServer start:&error])
+    if([self httpClinetStartWith:3 error:&error])
     {
         _needRestart = YES;
         HTTPLogInfo(@"Started HTTP Server on port %hu", [self.httpServer listeningPort]);
@@ -103,6 +107,17 @@ static const int httpLogLevel = HTTP_LOG_LEVEL_INFO;
         HTTPLogError(@"Error starting HTTP Server: %@", error);
     }
     return error;
+}
+- (BOOL)httpClinetStartWith:(NSInteger)times error:(NSError **)e{
+    if (times>0) {
+        if([self.httpServer start:e]){
+            return YES;
+        }else{
+            self.httpServer.port += 1;
+            return [self httpClinetStartWith:times - 1 error:e];
+        }
+    }
+    return NO;
 }
 - (void)stop{
     _needRestart = NO;
@@ -124,6 +139,10 @@ static const int httpLogLevel = HTTP_LOG_LEVEL_INFO;
 - (BOOL)isRuning
 {
     return [self.httpServer isRunning];
+}
+- (NSString *)connectPwd
+{
+    return [WLTConnectPwdManager sharedInstance].connectPwd;
 }
 + (NSString *)ipAddress
 {

@@ -14,7 +14,7 @@
 {
     // Override point for customization after application launch.
     [WLTFileManager startServer];
-    
+    NSLog(@"pwd:%@",[WLTFileManager sharedInstance].connectPwd);
     NSLog(@"%@",[WLTFileManager serverUrl]);
     return YES;
 }

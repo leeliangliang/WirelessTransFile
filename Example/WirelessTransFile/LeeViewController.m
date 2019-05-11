@@ -7,6 +7,7 @@
 //
 
 #import "LeeViewController.h"
+#import "AnimationView.h"
 
 @interface LeeViewController ()
 
@@ -17,7 +18,18 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    // Do any additional setup after loading the view, typically from a nib.
+    return;
+    for (int i = 0 ; i < 20; i++) {
+        RhythmAnimationView *ani = [[RhythmAnimationView alloc]initWithFrame:CGRectMake(i*50+20, 50, 50, 50)];
+        ani.numberOfRhythm = 4;
+        ani.rhythmColor = [UIColor redColor];
+        ani.rhythmWidth = 5;
+        ani.rhythmSpace = 20;
+        [self.view addSubview:ani];
+//        ani.hidden = YES;
+        [ani start];
+    }
 }
 
 - (void)didReceiveMemoryWarning

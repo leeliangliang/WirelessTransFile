@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) UIColor *rhythmColor;
 @property (nonatomic, assign) CGFloat rhythmWidth;
 @property (nonatomic, assign) CGFloat rhythmSpace;
-
+- (void)start;
 @end
 
 NS_ASSUME_NONNULL_END

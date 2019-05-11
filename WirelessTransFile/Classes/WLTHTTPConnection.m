@@ -25,12 +25,11 @@
     }
     NSDictionary *param = [self parseGetParams];
     if (param){
-        WLTActionHandlerResponse *handler = [[WLTActionHandlerResponse alloc] initWithParams:param withUriPath:path];
+        WLTActionHandlerResponse *handler = [[WLTActionHandlerResponse alloc] initWithParams:param withUriPath:path message:self->request];
         if (handler) return handler;
     }
     // Convert to relative path
     NSObject<HTTPResponse> * response = [super httpResponseForMethod:method URI:path];
     return response ?:[[HTTPFileResponse alloc]initWithFilePath:[self filePathForURI:@"/404.html"] forConnection:self];
 }
-
 @end

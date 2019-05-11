@@ -10,8 +10,9 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface WLTFileManager : NSObject
-
 @property (nonatomic, readonly)BOOL isRuning;
+@property (nonatomic, readonly)NSString *connectPwd;//连接密码
+
 /**
  @return 单例
  */

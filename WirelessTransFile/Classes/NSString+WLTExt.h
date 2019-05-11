@@ -11,6 +11,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface NSString (WLTExt)
 + (NSString *)formatBitSizeWith:(unsigned long long)size;
+
+- (nullable NSString *)md5;
 @end
 
 NS_ASSUME_NONNULL_END

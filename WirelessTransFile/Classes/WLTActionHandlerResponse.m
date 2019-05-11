@@ -7,19 +7,27 @@
 
 #import "WLTActionHandlerResponse.h"
 #import "WLTSystemTool.h"
+#import <CocoaHTTPServer/HTTPMessage.h>
+#import "WLTConnectPwdManager.h"
+#import "NSString+WLTExt.h"
 
 @interface WLTActionHandlerResponse ()
+{
+    NSString *_set_cookie;
+}
 @property (nonatomic, copy, readwrite) NSDictionary *param;
 @property (nonatomic, copy) NSString *path;
+@property (nonatomic, weak) HTTPMessage *httpMessage;
 @end
 
 @implementation WLTActionHandlerResponse
-- (instancetype)initWithParams:(NSDictionary *)params withUriPath:(NSString *)path
+- (instancetype)initWithParams:(NSDictionary *)params withUriPath:(NSString *)path message:(HTTPMessage *)msg
 {
     if(self = [super initWithData:nil])
     {
         self.param = params;
         self.path = [NSURL URLWithString:path].path;
+        self.httpMessage = msg;
         [self _transformJsonDataWith:[self _handlerRequest]];
     }
     return self;
@@ -29,10 +37,19 @@
     NSString *action = self.param[@"action"];
     if([action isEqualToString:@"Auth"])
     {
-        return [self _responseSucessDictWith:nil];
-    }else if([action isEqualToString:@"Browse"])
+        if ([self.param[@"authcode"] isEqualToString:[WLTConnectPwdManager sharedInstance].connectPwd]) {
+            _set_cookie =  [NSString stringWithFormat:@"pwd=%@;wifiLoading=true;", [WLTConnectPwdManager sharedInstance].connectPwdMd5];
+            return [self _responseSucessDictWith:nil];
+        }
+        return nil;
+    }
+    NSString *cookie = [self.httpMessage headerField:@"Cookie"];
+    if ([cookie containsString:[WLTConnectPwdManager sharedInstance].connectPwdMd5])
     {
-        return [self _responseSucessDictWith:nil];
+        if([action isEqualToString:@"Browse"])
+        {
+            return [self _responseSucessDictWith:nil];
+        }
     }
     return nil;
 }
@@ -54,5 +71,16 @@
          */
         data = [NSJSONSerialization dataWithJSONObject:dict options:0 error:NULL];
     }
+}
+- (NSDictionary *)httpHeaders
+{
+    if (_set_cookie)
+    {
+        return @{@"Set-Cookie":_set_cookie};
+    }
+    return nil;
+}
+- (void)connectionDidClose{
+    _set_cookie = nil;
 }
 @end

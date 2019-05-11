@@ -6,6 +6,8 @@
 //
 
 #import "NSString+WLTExt.h"
+#import <CommonCrypto/CommonCrypto.h>
+
 const unsigned long long kBitSize_TB_TAG = (unsigned long long)1024 * 1024 * 1024 * 1024;
 const unsigned long long kBitSize_GB_TAG = (unsigned long long)1024 * 1024 * 1024;
 const unsigned long long kBitSize_MB_TAG = (unsigned long long)1024 * 1024;
@@ -36,5 +38,18 @@ const unsigned long long kBitSize_KB_TAG = (unsigned long long)1024;
     NSDecimalNumber *sizeNum = [[NSDecimalNumber alloc]initWithUnsignedLongLong:size];
     NSDecimalNumber *result = [sizeNum decimalNumberByDividingBy:tb_tag withBehavior:roundUp];
     return [NSString stringWithFormat:@"%.1f%@", [result floatValue], subString];
+}
+- (nullable NSString *)md5{
+    if (!self) return nil;
+    
+    const char *cStr = self.UTF8String;
+    unsigned char result[CC_MD5_DIGEST_LENGTH];
+    CC_MD5(cStr, (CC_LONG)strlen(cStr), result);
+    
+    NSMutableString *md5Str = [NSMutableString string];
+    for (int i = 0; i < CC_MD5_DIGEST_LENGTH; ++i) {
+        [md5Str appendFormat:@"%02x", result[i]];
+    }
+    return md5Str;
 }
 @end
