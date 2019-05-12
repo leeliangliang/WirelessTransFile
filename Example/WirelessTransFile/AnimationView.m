@@ -7,7 +7,7 @@
 //
 
 #import "AnimationView.h"
-#import "POP.h"
+//#import "POP.h"
 
 @interface RhythmAnimationView ()
 @property(nonatomic, strong)NSMutableArray *layerArray;

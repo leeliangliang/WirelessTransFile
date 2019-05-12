@@ -61,7 +61,7 @@ static const NSString *kWLTFilePathNameKey = @"com.leeliang.WirelessTransFile";
 + (NSNumber*) WLT_totalDiskSpace
 {
     NSDictionary *fattributes = [[NSFileManager defaultManager] attributesOfFileSystemForPath:NSHomeDirectory() error:nil];
-
+    
     return [fattributes objectForKey:NSFileSystemSize];
 }
 
@@ -71,7 +71,7 @@ static const NSString *kWLTFilePathNameKey = @"com.leeliang.WirelessTransFile";
 + (NSNumber*) WLT_freeDiskSpace
 {
     NSDictionary *fattributes = [[NSFileManager defaultManager] attributesOfFileSystemForPath:NSHomeDirectory() error:nil];
-
+    
     return [fattributes objectForKey:NSFileSystemFreeSize];
 }
 + (NSString *)WLT_fileRootPath
@@ -88,31 +88,41 @@ static const NSString *kWLTFilePathNameKey = @"com.leeliang.WirelessTransFile";
     BOOL isdir;
     if (!([fileManager fileExistsAtPath:dirPath isDirectory:&isdir] && isdir)){
         //不存在或者不是文件夹 创建文件
-        [fileManager createDirectoryAtPath:dirPath withIntermediateDirectories:YES attributes:nil error:&error];
-        if (error) {
+        if (![fileManager createDirectoryAtPath:dirPath withIntermediateDirectories:YES attributes:nil error:&error]) {
             return nil;
         }
     }
     NSArray *filesArray = [fileManager contentsOfDirectoryAtPath:dirPath error:&error];
-    NSMutableArray *fileInfoArray = [NSMutableArray arrayWithCapacity:filesArray.count];
-    BOOL isDir = NO;
     if (!error)
     {
+        NSMutableArray *fileInfoArray = [NSMutableArray arrayWithCapacity:filesArray.count];
+        BOOL isDir = NO;
         for (NSString *fPath in filesArray) {
             NSString *filepath = [dirPath stringByAppendingPathComponent:fPath];
             BOOL exit = [fileManager fileExistsAtPath:filepath isDirectory:(&isDir)];
-            if(exit && !isDir){
-                NSString *fileName = [dirPath lastPathComponent];
-                NSMutableDictionary *fileInfo = [NSMutableDictionary dictionaryWithObjectsAndKeys:fPath,@"PATH",fileName,@"NAME",@"FILE",@"KIND",nil];
-                NSError *attriError;
-                NSDictionary *fileAttri = [fileManager attributesOfItemAtPath:filepath error:&attriError];
-                if (!attriError) {
-                    [fileInfo setObject:[NSString formatBitSizeWith:[fileAttri fileSize]] forKey:@"SIZE"];
+            if(exit){
+                if(!isDir){
+                    //如果是文件 获取信息
+                    NSString *filePath = [path stringByAppendingPathComponent:fPath];
+                    NSMutableDictionary *fileInfo = [NSMutableDictionary dictionaryWithObjectsAndKeys:filePath,@"PATH",fPath,@"NAME",@"FILE",@"KIND",nil];
+                    NSError *attriError;
+                    NSDictionary *fileAttri = [fileManager attributesOfItemAtPath:filepath error:&attriError];
+                    if (!attriError) {
+                        [fileInfo setObject:[NSString formatBitSizeWith:[fileAttri fileSize]] forKey:@"SIZE"];
+                        [fileInfo setObject:[[fileAttri fileCreationDate] formateDate] forKey:@"DATE"];
+                    }
+                    [fileInfoArray addObject:fileInfo];
+                }else{
+                    //如果是文件夹 遍历目录
+                    NSArray *subFiles = [self WLT_getFileInfoFromPath:[path stringByAppendingPathComponent:fPath]];
+                    if (subFiles.count > 0) {
+                        [fileInfoArray addObjectsFromArray:subFiles];
+                    }
                 }
-                [fileInfoArray addObject:fileInfo];
             }
         }
+        return fileInfoArray;
     }
-    return fileInfoArray;
+    return nil;
 }
 @end

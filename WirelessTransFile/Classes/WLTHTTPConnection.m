@@ -7,6 +7,7 @@
 
 #import "WLTHTTPConnection.h"
 #import <CocoaHTTPServer/HTTPFileResponse.h>
+#import <CocoaHTTPServer/HTTPAsyncFileResponse.h>
 #import "WLTActionHandlerResponse.h"
 #import <CocoaHTTPServer/HTTPMessage.h>
 
@@ -15,14 +16,17 @@
 #import "HTTPDynamicFileResponse.h"
 #import "HTTPFileResponse.h"
 #import "WLTSystemTool.h"
+#import "HTTPMessage+Ext.h"
+#import "NSString+WLTExt.h"
 
 @interface WLTHTTPConnection ()
 {
     MultipartFormDataParser*        parser;
-    NSFileHandle*                    storeFile;
+    NSFileHandle*                   storeFile;
 }
 @end
 @implementation WLTHTTPConnection
+
 - (NSObject<HTTPResponse> *)httpResponseForMethod:(NSString *)method URI:(NSString *)path
 {
     // Use HTTPConnection's filePathForURI method.
@@ -38,8 +42,11 @@
     }
     NSDictionary *param = [self parseGetParams];
     if (param){
-        WLTActionHandlerResponse *handler = [[WLTActionHandlerResponse alloc] initWithParams:param withUriPath:path message:self->request];
-        if (handler) return handler;
+        if ([param[@"action"] isEqualToString:@"Download"]) {
+            NSString* downFilePath = [[WLTSystemTool WLT_fileRootPath] stringByAppendingPathComponent:[path urlPath]];
+            return [[HTTPAsyncFileResponse alloc] initWithFilePath:downFilePath forConnection:self];
+        }
+       return [[WLTActionHandlerResponse alloc] initWithParams:param withUriPath:path message:request];
     }
     // Convert to relative path
     NSObject<HTTPResponse> * response = [super httpResponseForMethod:method URI:path];
@@ -73,7 +80,7 @@
 {
     // Inform HTTP server that we expect a body to accompany a POST request
     
-    if ([self isMultipartFormDataRequestWith:method atPath:path]){
+    if ([self isMultipartFormDataRequestWith:method atPath:path] && [request authCookieForUserLogin]){
         // here we need to make sure, boundary is set in header
         NSString* contentType = [request headerField:@"Content-Type"];
         NSUInteger paramsSeparator = [contentType rangeOfString:@";"].location;
@@ -149,22 +156,19 @@
     
     BOOL isDir = YES;
     if (![[NSFileManager defaultManager]fileExistsAtPath:uploadDirPath isDirectory:&isDir ]) {
-        [[NSFileManager defaultManager]createDirectoryAtPath:uploadDirPath withIntermediateDirectories:YES attributes:nil error:nil];
+        [[NSFileManager defaultManager] createDirectoryAtPath:uploadDirPath withIntermediateDirectories:YES attributes:nil error:nil];
     }
     
-    NSString* filePath = [uploadDirPath stringByAppendingPathComponent: filename];
-    if( [[NSFileManager defaultManager] fileExistsAtPath:filePath] ) {
-        storeFile = nil;
+    NSString *oldfilePath = [uploadDirPath stringByAppendingPathComponent: filename];
+    NSString *filePath  = [oldfilePath filePathIfisExitAndRename];
+    
+    if(![[NSFileManager defaultManager] createFileAtPath:filePath contents:nil attributes:nil]) {
+        return;
     }
-    else {
-        if(![[NSFileManager defaultManager] createDirectoryAtPath:uploadDirPath withIntermediateDirectories:true attributes:nil error:nil]) {
-        }
-        if(![[NSFileManager defaultManager] createFileAtPath:filePath contents:nil attributes:nil]) {
-        }
-        storeFile = [NSFileHandle fileHandleForWritingAtPath:filePath];
-    }
+    storeFile = [NSFileHandle fileHandleForWritingAtPath:filePath];
+    NSString *params = [request headerField:@"boundary"];
+    [request setHeaderField:params value:@"1"];
 }
-
 
 - (void) processContent:(NSData*) data WithHeader:(MultipartMessageHeader*) header
 {

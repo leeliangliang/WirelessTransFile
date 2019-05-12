@@ -7,9 +7,9 @@
 
 #import "WLTActionHandlerResponse.h"
 #import "WLTSystemTool.h"
-#import <CocoaHTTPServer/HTTPMessage.h>
 #import "WLTConnectPwdManager.h"
 #import "NSString+WLTExt.h"
+#import "HTTPMessage+Ext.h"
 
 @interface WLTActionHandlerResponse ()
 {
@@ -26,7 +26,7 @@
     if(self = [super initWithData:nil])
     {
         self.param = params;
-        self.path = [NSURL URLWithString:path].path;
+        self.path = [path urlPath];
         self.httpMessage = msg;
         [self _transformJsonDataWith:[self _handlerRequest]];
     }
@@ -43,12 +43,60 @@
         }
         return nil;
     }
-    NSString *cookie = [self.httpMessage headerField:@"Cookie"];
-    if ([cookie containsString:[WLTConnectPwdManager sharedInstance].connectPwdMd5])
+    if ([self.httpMessage authCookieForUserLogin])
     {
+        //浏览
         if([action isEqualToString:@"Browse"])
         {
             return [self _responseSucessDictWith:nil];
+        }
+        //上传
+        if([action isEqualToString:@"upload"])
+        {
+            NSString *params = [self.httpMessage headerField:@"boundary"];
+            if ([[self.httpMessage headerField:params] boolValue]){
+                self.path = @"others";
+                return [self _responseSucessDictWith:nil];
+            }else{
+                return nil;
+            }
+        }
+        //删除
+        if([action isEqualToString:@"Delete"])
+        {
+            @try {
+                NSString *files = [self.param[@"files"] componentsSeparatedByString:@"|"];
+                for (NSString *path in files) {
+                    NSString *delPath = [[WLTSystemTool WLT_fileRootPath] stringByAppendingPathComponent:path];
+                    
+                    NSFileManager *fileManager = [NSFileManager defaultManager];
+                    NSError *e;
+                    [fileManager removeItemAtPath:delPath error:&e];
+                    if (e) {
+                        @throw e;
+                    }
+                }
+            } @catch (NSException *exception) {
+                
+            } @finally {
+                return [self _responseSucessDictWith:nil];
+            }
+            return nil;
+        }
+        //重命名
+        if([action isEqualToString:@"Rename"])
+        {
+            NSString *file = self.param[@"path"];
+            NSString *oldPath = [[WLTSystemTool WLT_fileRootPath] stringByAppendingPathComponent:file];
+            NSString *newName = self.param[@"newpath"];
+            NSString *newPath = [[WLTSystemTool WLT_fileRootPath] stringByAppendingPathComponent: [[file stringByDeletingLastPathComponent] stringByAppendingPathComponent:newName]];
+            NSFileManager *manager = [NSFileManager defaultManager];
+            if ([manager moveItemAtPath:oldPath toPath:newPath error:nil]) {
+                return [self _responseSucessDictWith:nil];
+            }else{
+                return nil;
+            }
+            
         }
     }
     return nil;

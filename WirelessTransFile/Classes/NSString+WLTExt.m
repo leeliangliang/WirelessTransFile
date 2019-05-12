@@ -52,4 +52,36 @@ const unsigned long long kBitSize_KB_TAG = (unsigned long long)1024;
     }
     return md5Str;
 }
+- (NSString *)urlPath
+{
+    return [NSURL URLWithString:self].path;
+}
+
+/**
+ 对文件重命名
+  @return 新路径
+ */
+- (NSString *)filePathIfisExitAndRename{
+    if (![[NSFileManager defaultManager] fileExistsAtPath:self]) {
+        return self;
+    }
+    //获取文件名： 视频.MP4
+    NSString *lastPathComponent = [self lastPathComponent];
+    //获取后缀：MP4
+    NSString *pathExtension = [self pathExtension];
+    NSString *name = [lastPathComponent stringByDeletingPathExtension];
+    //用传过来的路径创建新路径 首先去除文件名
+    NSString *pathNew = [self stringByReplacingOccurrencesOfString:lastPathComponent withString:@""];
+    //然后拼接新文件名：新文件名为当前的：年月日时分秒 yyyyMMddHHmmss
+    NSString *moveToPath = [NSString stringWithFormat:@"%@%@(1).%@",pathNew,name,pathExtension];
+    return moveToPath;
+}
+@end
+
+@implementation NSDate (WLTExt)
+- (NSString *)formateDate{
+    NSDateFormatter * formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd HH:mm"];
+    return [formatter stringFromDate:self];
+}
 @end
